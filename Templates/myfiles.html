@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    {% extends 'base.html' %}
+
+    {% block content %}
+
+    <h2 class="mb-4">My Files</h2>
+
+    <form method="GET" class="mb-4">
+        <div class="input-group">
+
+            <input type="text" name="search" class="form-control" placeholder="Search files..." value="{{ search }}">
+
+            <button class="btn btn-primary">
+                Search
+            </button>
+
+        </div>
+    </form>
+
+    <table class="table table-bordered table-hover">
+
+        <thead class="table-dark">
+
+            <tr>
+
+                <th>Type</th>
+                <th>Name</th>
+                <th>Size</th>
+                <th>Downloads</th>
+                <th>Expires</th>
+                <th>Actions</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            {% for file in files %}
+
+            <tr>
+
+                <td>{{ file.icon }}</td>
+
+                <td>{{ file.original_name }}</td>
+
+                <td>{{ file.file_size|filesizeformat }}</td>
+
+                <td>{{ file.download_count }}</td>
+
+                <td>{{ file.expiry_date }}</td>
+
+                <td>
+
+                    <a href="{% url 'download_file' file.id %}" class="btn btn-success btn-sm">
+                        Download
+                    </a>
+
+                    <button type="button" class="btn btn-info btn-sm copy-btn"
+                        data-link="{{ request.scheme }}://{{ request.get_host }}{% url 'share_file' file.share_token %}">
+                        Copy Link
+                    </button>
+
+                    <a href="{% url 'delete_file' file.id %}" class="btn btn-danger btn-sm"
+                        onclick="return confirm('Delete this file?');">
+                        Delete
+                    </a>
+
+                </td>
+
+            </tr>
+
+            {% empty %}
+
+            <tr>
+
+                <td colspan="5" class="text-center">
+                    No files found.
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+    {% endblock %}
+</body>
+
+</html>

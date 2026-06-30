@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    {% extends 'base.html' %}
+
+    {% block content %}
+
+    <div class="card shadow p-5">
+
+        <h2 class="text-center mb-4">
+            📁 Shared File
+        </h2>
+
+        <table class="table table-bordered">
+
+            <tr>
+                <th>File Name</th>
+                <td>{{ file.original_name }}</td>
+            </tr>
+
+            <tr>
+                <th>File Size</th>
+                <td>{{ file.file_size|filesizeformat }}</td>
+            </tr>
+
+            <tr>
+                <th>Uploaded</th>
+                <td>{{ file.upload_date }}</td>
+            </tr>
+
+            <tr>
+                <th>Expires</th>
+                <td>{{ file.expiry_date }}</td>
+            </tr>
+
+        </table>
+
+        <hr>
+
+        <h4>📧 Share via Email</h4>
+
+        {% if success %}
+        <div class="alert alert-success">
+            Email sent successfully.
+        </div>
+        {% endif %}
+
+        <!-- Email Form -->
+        <form method="POST" class="mb-4">
+
+            {% csrf_token %}
+
+            <input type="hidden" name="action" value="email">
+
+            <div class="input-group">
+
+                <input type="email" name="email" class="form-control" placeholder="Enter email address" required>
+
+                <button class="btn btn-primary">
+                    Send Link
+                </button>
+
+            </div>
+
+        </form>
+
+        <!-- Download Form -->
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <input type="hidden" name="action" value="download">
+
+            <button class="btn btn-success btn-lg">
+                ⬇ Download File
+            </button>
+
+        </form>
+
+    </div>
+
+    {% endblock %}
+</body>
+
+</html>

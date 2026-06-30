@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    {% extends 'base.html' %}
+
+    {% block content %}
+
+    <h2 class="mb-4">
+        Welcome {{ user.username }}
+    </h2>
+
+    <div class="row">
+
+        <div class="col-md-6">
+            <div class="card p-4 shadow-sm">
+                <h5>Total Files</h5>
+                <h2>{{ total_files }}</h2>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card p-4 shadow-sm">
+                <h5>Storage Used</h5>
+                <h2>{{ storage }} KB</h2>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="card mt-4 p-4 shadow-sm">
+
+        <h4>📄 Last Uploaded File</h4>
+
+        {% if latest %}
+
+        <h5>{{ latest.original_name }}</h5>
+
+        <p>
+            Uploaded on {{ latest.upload_date }}
+        </p>
+
+        {% else %}
+
+        <p>No files uploaded yet.</p>
+
+        {% endif %}
+
+    </div>
+
+    <div class="card mt-4 p-4 shadow-sm">
+
+        <h4>📁 Recent Uploads</h4>
+
+        <table class="table table-striped">
+
+            <thead>
+
+                <tr>
+                    <th>File</th>
+                    <th>Date</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for file in recent %}
+
+                <tr>
+
+                    <td>{{ file.original_name }}</td>
+
+                    <td>{{ file.upload_date }}</td>
+
+                </tr>
+
+                {% empty %}
+
+                <tr>
+
+                    <td colspan="2" class="text-center">
+
+                        No Files Uploaded
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    {% endblock %}
+</body>
+
+</html>

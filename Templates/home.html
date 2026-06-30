@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    {% extends 'base.html' %}
+
+    {% block content %}
+
+    <!-- Hero Section -->
+    <div class="text-center py-5">
+
+        <h1 class="display-3 fw-bold">
+            📁 File Sharing System
+        </h1>
+
+        <p class="lead mt-4">
+            Securely Upload, Store and Share Your Files Anywhere.
+        </p>
+
+        <div class="mt-4">
+
+            {% if user.is_authenticated %}
+
+            <a href="{% url 'dashboard' %}" class="btn btn-primary btn-lg me-3">
+                Dashboard
+            </a>
+
+            {% else %}
+
+            <a href="{% url 'register' %}" class="btn btn-primary btn-lg me-3">
+                Get Started
+            </a>
+
+            <a href="{% url 'login' %}" class="btn btn-outline-dark btn-lg">
+                Login
+            </a>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+
+    <hr class="my-5">
+
+    <h2 class="text-center mb-5">
+        📊 Platform Statistics
+    </h2>
+
+    <div class="row text-center">
+
+        <div class="col-md-4 mb-4">
+
+            <div class="card shadow p-4">
+
+                <h1 class="text-primary">
+                    👥
+                </h1>
+
+                <h2>{{ total_users }}</h2>
+
+                <h5>Total Users</h5>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4 mb-4">
+
+            <div class="card shadow p-4">
+
+                <h1 class="text-success">
+                    📁
+                </h1>
+
+                <h2>{{ total_files }}</h2>
+
+                <h5>Total Files</h5>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4 mb-4">
+
+            <div class="card shadow p-4">
+
+                <h1 class="text-danger">
+                    📥
+                </h1>
+
+                <h2>{{ total_downloads }}</h2>
+
+                <h5>Total Downloads</h5>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <hr>
+
+    <!-- Features -->
+    <h2 class="text-center mb-5">
+        Our Features
+    </h2>
+
+    <div class="row">
+
+        <div class="col-md-4 mb-4">
+            <div class="card p-4 h-100 shadow-sm text-center">
+
+                <h1>📤</h1>
+
+                <h4>Upload Files</h4>
+
+                <p>
+                    Upload documents, images and archives securely.
+                </p>
+
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card p-4 h-100 shadow-sm text-center">
+
+                <h1>📥</h1>
+
+                <h4>Download Files</h4>
+
+                <p>
+                    Download your files anytime from any device.
+                </p>
+
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card p-4 h-100 shadow-sm text-center">
+
+                <h1>🔍</h1>
+
+                <h4>Search Files</h4>
+
+                <p>
+                    Quickly search your uploaded files.
+                </p>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row mt-3">
+
+        <div class="col-md-4 mb-4">
+            <div class="card p-4 h-100 shadow-sm text-center">
+
+                <h1>👤</h1>
+
+                <h4>User Profile</h4>
+
+                <p>
+                    Manage your personal account securely.
+                </p>
+
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card p-4 h-100 shadow-sm text-center">
+
+                <h1>📊</h1>
+
+                <h4>Dashboard</h4>
+
+                <p>
+                    View upload statistics and recent files.
+                </p>
+
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card p-4 h-100 shadow-sm text-center">
+
+                <h1>🔒</h1>
+
+                <h4>Secure Storage</h4>
+
+                <p>
+                    Files are stored securely for every user.
+                </p>
+
+            </div>
+        </div>
+
+    </div>
+
+    <hr class="my-5">
+
+    <!-- How It Works -->
+    <h2 class="text-center mb-5">
+        How It Works
+    </h2>
+
+    <div class="row text-center">
+
+        <div class="col-md-3">
+            <h1>1️⃣</h1>
+            <h5>Register</h5>
+        </div>
+
+        <div class="col-md-3">
+            <h1>2️⃣</h1>
+            <h5>Login</h5>
+        </div>
+
+        <div class="col-md-3">
+            <h1>3️⃣</h1>
+            <h5>Upload</h5>
+        </div>
+
+        <div class="col-md-3">
+            <h1>4️⃣</h1>
+            <h5>Download</h5>
+        </div>
+
+    </div>
+
+    <hr class="my-5">
+
+    <div class="row align-items-center">
+
+        <div class="col-md-6">
+
+            <h2>📖 About File Sharing System</h2>
+
+            <p class="mt-4">
+
+                File Sharing System is a secure cloud-based application developed
+                using Django, HTML, CSS, JavaScript and Bootstrap.
+
+                It allows users to upload, download, search and manage their files
+                safely from anywhere.
+
+            </p>
+
+            <p>
+
+                Our goal is to provide a simple, fast and secure platform for file
+                management with an easy-to-use interface.
+
+            </p>
+
+        </div>
+
+        <div class="col-md-6 text-center">
+
+            <div class="card shadow p-5">
+
+                <h1 style="font-size:80px;">☁️</h1>
+
+                <h4>Secure Cloud Storage</h4>
+
+                <p>Your files are always protected.</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <hr class="my-5">
+
+    <h2 class="text-center mb-5">
+        📞 Contact Us
+    </h2>
+
+    <div class="row">
+
+        <div class="col-md-6">
+
+            <div class="card p-4 shadow">
+
+                <h4>Contact Information</h4>
+
+                <hr>
+
+                <p><strong>📧 Email:</strong> support@filesharing.com</p>
+
+                <p><strong>📱 Phone:</strong> +91 9876543210</p>
+
+                <p><strong>📍 Address:</strong> Hyderabad, India</p>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-6">
+
+            <div class="card p-4 shadow">
+
+                <h4>Send a Message</h4>
+
+                <hr>
+
+                <form>
+
+                    <div class="mb-3">
+
+                        <input type="text" class="form-control" placeholder="Your Name">
+
+                    </div>
+
+                    <div class="mb-3">
+
+                        <input type="email" class="form-control" placeholder="Your Email">
+
+                    </div>
+
+                    <div class="mb-3">
+
+                        <textarea class="form-control" rows="5" placeholder="Your Message"></textarea>
+
+                    </div>
+
+                    <button class="btn btn-primary w-100">
+
+                        Send Message
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <hr class="my-5">
+
+    <!-- Call To Action -->
+    <div class="text-center">
+
+        <h2>
+            Ready to Start?
+        </h2>
+
+        <p class="lead">
+            Create your free account and securely manage your files.
+        </p>
+
+        {% if not user.is_authenticated %}
+
+        <a href="{% url 'register' %}" class="btn btn-success btn-lg">
+            Register Now
+        </a>
+
+        {% endif %}
+
+    </div>
+
+    {% endblock %}
+</body>
+
+</html>

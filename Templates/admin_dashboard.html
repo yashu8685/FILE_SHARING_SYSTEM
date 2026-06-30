@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    {% extends 'base.html' %}
+
+    {% block content %}
+
+    <h2 class="mb-4">
+        📊 Admin Analytics Dashboard
+    </h2>
+
+    <div class="row">
+
+        <div class="col-md-3">
+            <div class="card text-center shadow p-3">
+                <h5>👥 Users</h5>
+                <h2>{{ total_users }}</h2>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card text-center shadow p-3">
+                <h5>📁 Files</h5>
+                <h2>{{ total_files }}</h2>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card text-center shadow p-3">
+                <h5>⬇ Downloads</h5>
+                <h2>{{ total_downloads }}</h2>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card text-center shadow p-3">
+                <h5>💾 Storage</h5>
+                <h2>{{ storage }} MB</h2>
+            </div>
+        </div>
+
+    </div>
+
+    <br>
+
+    <div class="card shadow">
+
+        <div class="card-header bg-dark text-white">
+
+            <h4>🏆 Top Downloaded Files</h4>
+
+        </div>
+
+        <div class="card-body">
+
+            <table class="table table-striped">
+
+                <thead>
+
+                    <tr>
+
+                        <th>File Name</th>
+                        <th>Owner</th>
+                        <th>Downloads</th>
+                        <th>Uploaded</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    {% for file in top_files %}
+
+                    <tr>
+
+                        <td>{{ file.original_name }}</td>
+
+                        <td>{{ file.user.username }}</td>
+
+                        <td>{{ file.download_count }}</td>
+
+                        <td>{{ file.upload_date }}</td>
+
+                    </tr>
+
+                    {% empty %}
+
+                    <tr>
+
+                        <td colspan="4" class="text-center">
+
+                            No files available.
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+    {% endblock %}
+</body>
+
+</html>
