@@ -37,11 +37,12 @@ import os
 ALLOWED_HOSTS = [
     "127.0.0.1",
     "localhost",
-    ".railway.app",
+    ".onrender.com",
+    "file-sharing-system-1-e6yo.onrender.com",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://*.railway.app",
+    "https://file-sharing-system-1-e6yo.onrender.com",
 ]
 
 
