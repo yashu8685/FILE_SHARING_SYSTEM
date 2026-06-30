@@ -93,6 +93,8 @@ WSGI_APPLICATION = 'FS.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
+import os
+import dj_database_url
 
 DATABASES = {
     "default": dj_database_url.config(
