@@ -34,12 +34,7 @@ DEBUG = os.getenv("DEBUG", "True") == "True"
 
 import os
 
-ALLOWED_HOSTS = [
-    "127.0.0.1",
-    "localhost",
-    ".onrender.com",
-    "file-sharing-system-1-e6yo.onrender.com",
-]
+ALLOWED_HOSTS = ['*']
 
 CSRF_TRUSTED_ORIGINS = [
     "https://file-sharing-system-1-e6yo.onrender.com",

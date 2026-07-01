@@ -4,17 +4,8 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from files.models import UploadedFile
 from django.db.models import Sum
-
-
 from django.contrib.admin.views.decorators import staff_member_required
-
-
-
-
 from django.contrib.auth.models import User
-
-
-
 from django.contrib import messages
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
