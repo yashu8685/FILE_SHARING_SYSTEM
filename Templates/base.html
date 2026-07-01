@@ -178,6 +178,25 @@
     <script src="{% static 'js/upload.js' %}"></script>
     <script src="{% static 'js/theme.js' %}"></script>
 
+
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".copy-btn").forEach(button => {
+        button.addEventListener("click", function () {
+            const link = this.dataset.link;
+
+            navigator.clipboard.writeText(link)
+                .then(() => {
+                    alert("Link copied successfully!");
+                })
+                .catch(err => {
+                    console.error(err);
+                    alert("Unable to copy link.");
+                });
+        });
+    });
+});
+</script>
 </body>
 
 </html>
